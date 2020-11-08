@@ -20,13 +20,16 @@ function searchWeather(searchValue){
         //make sure there are no previous results
         $("#today").empty();
 
-        //saveCity(searchValue);
+        //store city data in history
+        saveCity(searchValue);
+
         //creating a card to display the weather data
         var title = $("<h3>").addClass("card-title").text(data.name);
-        var card = $("<div").addClass("card");
+        var card = $("<div>").addClass("card");
         var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed);
         var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.humidity);
         var cardBody = $("<div>").addClass("card-body");
+        
 
         cardBody.append(title, wind, humidity);
         console.log(cardBody);
