@@ -26,12 +26,13 @@ function searchWeather(searchValue){
         //creating a card to display the weather data
         var title = $("<h3>").addClass("card-title").text(data.name);
         var card = $("<div>").addClass("card");
+        var temp = $("<h4>").addClass("card-text").text("Temp: " + data.main.temp + "F");
         var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed);
-        var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.humidity);
+        var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity);
         var cardBody = $("<div>").addClass("card-body");
         
 
-        cardBody.append(title, wind, humidity);
+        cardBody.append(title, temp, wind, humidity);
         console.log(cardBody);
         card.append(cardBody);
         $("#today").append(card);
