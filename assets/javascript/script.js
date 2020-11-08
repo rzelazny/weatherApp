@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var APIKey = ""
+    var APIKey = configVariables.apiKey;
 
     //function grabs the user input value
     $("#search-button").on("click", function(){
