@@ -1,16 +1,19 @@
 body{
-    background-image: url("/assets/images/background.jpg");
-    /* background-size: 2000px; */
+    background-image: url("../images/sky_background.jpg");
+    background-size: 2000px;
 }
 .card{
     background-color: lightblue;
-    border: darkgray;
+    border: 2px solid darkgray;
     border-style: ridge;
     border-width: 2px;
+    border-radius: 10px;
+
+    padding: 10px;
 }
 .cityHistory{
     background-color: lightgray;
-    padding: 4px;
+    padding: 8px;
     border: darkgray;
     border-style: ridge;
     border-width: 2px;
