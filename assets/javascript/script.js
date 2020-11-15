@@ -30,7 +30,7 @@ function searchWeather(searchValue){
         //get weather icon url 
         var weatherIconURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
         var weatherIcon = $("<img>").attr("src", weatherIconURL);
-        
+            weatherIcon.addClass("weather-icon");
         var card = $("<div>").addClass("card");
         var temp = $("<h4>").addClass("card-text").text("Temp: " + data.main.temp + "F");
         var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + "MPH");
@@ -97,6 +97,7 @@ function getForecast(city){
             //get the weather icon url
             var weatherIconURL = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
             var showIcon = $("<img>").attr("src", weatherIconURL);
+            showIcon.addClass("forecast-icon");
 
             var temp = $("<h4>").addClass("card-text").text("Temp: " + data.list[i].main.temp + "F");
             var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity);
