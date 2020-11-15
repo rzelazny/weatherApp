@@ -70,10 +70,8 @@ function saveCity(city){
         $("#history").append(cityName);
         cityList.push(city)
 
-        //remove existing event handlers so each history element only ends up with one
-        $(".cityHistory").off();
         //function checks for user clicking city history
-        $(".cityHistory").on("click", function(){
+        cityName.on("click", function(){
             searchWeather(this.innerHTML);
         })
     }
