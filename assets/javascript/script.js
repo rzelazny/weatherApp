@@ -130,7 +130,21 @@ function getUVIndex(lat, lon){
         url: "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey,
     }).then(function(data){
         var uvIndex = $("<p>").addClass("card-text").text("UV Index: " + data.value);
+        if(data.value < 3){
+            uvIndex.addClass("uv uv-green");
+        }
+        else if (data.value < 7){
+            uvIndex.addClass("uv uv-yellow");
+        }
+        else{
+            uvIndex.addClass("uv uv-red");
+        }
+
+
         
+        // var uvIndex = $("<span>").addClass("border:", " 1px solid black").text(data.value);
+        // $("#resultCardBody").append(uvIndexTitle);
+
         $("#resultCardBody").append(uvIndex);
     })
 }

@@ -25,6 +25,25 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
+.uv{
+    padding: 4px;
+    width: 110px;
+    
+    /* border-width: 2px; */
+    border-radius: 5px;
+}
+
+.uv-green{
+    color: white;
+    background-color: green;
+}
+.uv-yellow{
+    background-color: yellow;
+}
+.uv-red{
+    color: white;
+    background-color: red;
+}
 .col-md-5ths{
     position: relative;
     min-height: 1px;
