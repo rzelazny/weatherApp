@@ -1,6 +1,6 @@
-.body{
-    background-image: url("assets/background.jpg");
-    background-size: 2000px;
+body{
+    background-image: url("/assets/images/background.jpg");
+    /* background-size: 2000px; */
 }
 .card{
     background-color: lightblue;
