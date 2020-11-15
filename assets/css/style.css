@@ -1,9 +1,19 @@
+.body{
+    background-image: url("assets/background.jpg");
+    background-size: 2000px;
+}
 .card{
-    background-color: blanchedalmond;
+    background-color: lightblue;
+    border: darkgray;
+    border-style: ridge;
+    border-width: 2px;
 }
 .cityHistory{
     background-color: lightgray;
     padding: 4px;
+    border: darkgray;
+    border-style: ridge;
+    border-width: 2px;
 }
 
 .col-md-5ths{
