@@ -1,6 +1,7 @@
 $(document).ready(function(){
     //variables
     var APIKey = configVariables.apiKey;
+    var cityList = [];
 
     //function grabs the user input value
     $("#search-button").on("click", function(){
@@ -47,24 +48,29 @@ function searchWeather(searchValue){
 // Add last ran cities to local storage and display history log
 function saveCity(city){
 
+    //store city as the last one searched
     localStorage.setItem("savedCity", city);
 
-    var cityName = $("<h4>").addClass("card-title").text(city);
-    cityName.attr("class", "cityHistory")
+    //Only append cities to the history once
+    if(cityList.indexOf(city) === -1 ){
+        var cityName = $("<h4>").addClass("card-title").text(city);
+        cityName.attr("class", "cityHistory")
 
-    // var card = $("<div>").addClass("card card-history");
-    // card.attr("id", city)
-    // var cardBody = $("<div>").addClass("card-body");
+        // var card = $("<div>").addClass("card card-history");
+        // card.attr("id", city)
+        // var cardBody = $("<div>").addClass("card-body");
 
-    // cardBody.append(cityName);
-    // card.append(cardBody);
-    $("#history").append(cityName);
+        // cardBody.append(cityName);
+        // card.append(cardBody);
 
-    //function checks for user clicking city history
-    $(".cityHistory").on("click", function(){
+        $("#history").append(cityName);
+        cityList.push(city)
+
+        //function checks for user clicking city history
+        $(".cityHistory").on("click", function(){
         searchWeather(this.innerHTML);
-    })
-
+        })
+    }
 }
 
 //function to get the 5 day forecast
@@ -96,7 +102,6 @@ function getForecast(city){
             column.append(card)
             $("#forecast").append(column);
         }
-
     })
 }
 
@@ -117,8 +122,6 @@ function init (){
     var savedCity = localStorage.getItem("savedCity")
     searchWeather(savedCity);
 }
-
-//
 
 //always load stored data
 init()
