@@ -19,16 +19,12 @@ function searchWeather(searchValue){
     }).then(function(data){
         //make sure there are no previous results
         $("#today").empty();
-        console.log(data)
 
         //store city data in history
         saveCity(searchValue);
         
-        //var weatherIcon = $("<i class='fas fa-cloud'></i>")
-        
         //creating a card to display the weather data
-        var title = $("<h3>").addClass("card-title").text(data.name + " ");
-            //title.innerHTML(weatherIcon);
+        var title = $("<h3>").addClass("card-title").text(data.name);
         var card = $("<div>").addClass("card");
             //card.attr("id", "resultCard");
         var temp = $("<h4>").addClass("card-text").text("Temp: " + data.main.temp + "F");
@@ -54,7 +50,7 @@ function saveCity(city){
 
     //store city as the last one searched
     localStorage.setItem("savedCity", city);
-
+    
     //Only append cities to the history once
     if(cityList.indexOf(city) === -1 ){
         var cityName = $("<h4>").addClass("card-title").text(city);
@@ -70,9 +66,11 @@ function saveCity(city){
         $("#history").append(cityName);
         cityList.push(city)
 
+        //remove existing event handlers so each history element only ends up with one
+        $(".cityHistory").off();
         //function checks for user clicking city history
         $(".cityHistory").on("click", function(){
-        searchWeather(this.innerHTML);
+            searchWeather(this.innerHTML);
         })
     }
 }
