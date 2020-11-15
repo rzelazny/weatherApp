@@ -22,15 +22,24 @@ function searchWeather(searchValue){
 
         //store city data in history
         saveCity(searchValue);
-        console.log(data);
 
         //creating a card to display the weather data
-        var title = $("<h3>").addClass("card-title").text(data.name);
+        
+        //start with today's date
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today = mm + '/' + dd + '/' + yyyy;
+
+        var forecastDate = $("<h3>").addClass("card-title").text(today);
+        var cityName = $("<h3>").addClass("card-title").text(data.name);
 
         //get weather icon url 
         var weatherIconURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
         var weatherIcon = $("<img>").attr("src", weatherIconURL);
             weatherIcon.addClass("weather-icon");
+
         var card = $("<div>").addClass("card");
         var temp = $("<h4>").addClass("card-text").text("Temp: " + Math.round(data.main.temp) + "F");
         var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + " MPH");
@@ -39,7 +48,7 @@ function searchWeather(searchValue){
             cardBody.attr("id", "resultCardBody");
 
         //append current stats to card
-        cardBody.append(title, weatherIcon, temp, wind, humidity);
+        cardBody.append(forecastDate, cityName, weatherIcon, temp, wind, humidity);
         card.append(cardBody);
         $("#today").append(card);
 
@@ -89,7 +98,7 @@ function getForecast(city){
         console.log(data);
         $("#forecast").empty();
 
-        for(i=0; i<data.list.length; i=i+8){ //weather updates are in 3 hour increments so we only need every 8th
+        for(i=7; i<data.list.length; i=i+8){ //weather updates are in 3 hour increments so we only need every 8th
             //get the date from the time string and remove the time
             var forecastDay = data.list[i].dt_txt;
             forecastDay = forecastDay.split(' ')[0]; 
