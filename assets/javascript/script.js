@@ -32,8 +32,8 @@ function searchWeather(searchValue){
         var weatherIcon = $("<img>").attr("src", weatherIconURL);
             weatherIcon.addClass("weather-icon");
         var card = $("<div>").addClass("card");
-        var temp = $("<h4>").addClass("card-text").text("Temp: " + data.main.temp + "F");
-        var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + "MPH");
+        var temp = $("<h4>").addClass("card-text").text("Temp: " + Math.round(data.main.temp) + "F");
+        var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + " MPH");
         var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
         var cardBody = $("<div>").addClass("card-body");
             cardBody.attr("id", "resultCardBody");
@@ -99,8 +99,8 @@ function getForecast(city){
             var showIcon = $("<img>").attr("src", weatherIconURL);
             showIcon.addClass("forecast-icon");
 
-            var temp = $("<h4>").addClass("card-text").text("Temp: " + data.list[i].main.temp + "F");
-            var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity);
+            var temp = $("<h4>").addClass("card-text").text("Temp: " + Math.round(data.list[i].main.temp) + "F");
+            var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
             var column = $("<div>").addClass("col-md-5ths");
             var card = $("<div>").addClass("card");
             var cardBody = $("<div>").addClass("card-body");
