@@ -70,17 +70,10 @@ function saveCity(city){
         var cityName = $("<h4>").addClass("card-title").text(city);
         cityName.attr("class", "cityHistory")
 
-        // var card = $("<div>").addClass("card card-history");
-        // card.attr("id", city)
-        // var cardBody = $("<div>").addClass("card-body");
-
-        // cardBody.append(cityName);
-        // card.append(cardBody);
-
         $("#history").append(cityName);
         cityList.push(city)
 
-        //function checks for user clicking city history
+        //add on click function
         cityName.on("click", function(){
             searchWeather(this.innerHTML);
         })
@@ -95,10 +88,11 @@ function getForecast(city){
         dataType: "json"
         
     }).then(function(data){
-        console.log(data);
+        //clear out existing elements
         $("#forecast").empty();
 
-        for(i=7; i<data.list.length; i=i+8){ //weather updates are in 3 hour increments so we only need every 8th
+        //weather updates are in 3 hour increments so we only need every 8th
+        for(i=7; i<data.list.length; i=i+8){ 
             //get the date from the time string and remove the time
             var forecastDay = data.list[i].dt_txt;
             forecastDay = forecastDay.split(' ')[0]; 
@@ -139,12 +133,6 @@ function getUVIndex(lat, lon){
         else{
             uvIndex.addClass("uv uv-red");
         }
-
-
-        
-        // var uvIndex = $("<span>").addClass("border:", " 1px solid black").text(data.value);
-        // $("#resultCardBody").append(uvIndexTitle);
-
         $("#resultCardBody").append(uvIndex);
     })
 }
