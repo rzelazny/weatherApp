@@ -14,21 +14,28 @@
         <h1>Weather Dashboard</h1>
     </header>
     <div class="container-fluid">
+        <!-- search and results row -->
         <div class="row">
-            <aside class="col-md-3 bg-light">
-                <h5>Search for a city</h5>
-            </aside>
-            <div class="form-inline form-group">
-                <input class="form-control" type="text" id="search-value">
-                <button class="btn btn=primary" id="search-button"> <i class="fa fa-search"></i> </button>
+            <div class="col-md-3">
+                <div class="form-inline form-group">
+                    <label for="search-value">Search for a City</label>
+                    <input class="form-control" type="text" id="search-value">
+                    
+                    <button class="btn btn=primary" id="search-button"> <i class="fa fa-search"></i> </button>
+                </div>
+                <div class="history" id="history"></div>
+            </div>
+            <div class="col-md-9">
+                <div id ="today"></div>
+                <div class="row">
+                    <div id ="forecast">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div id = "today">
+        <!-- forecast row -->
         
     </div>
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type='text/javascript' src='config.js'></script>
