@@ -22,9 +22,13 @@ function searchWeather(searchValue){
 
         //store city data in history
         saveCity(searchValue);
-        
+
+        //<i class="fas fa-cloud"></i>
+        var faIcon = "fas fa-cloud"
+
         //creating a card to display the weather data
         var title = $("<h3>").addClass("card-title").text(data.name);
+        var weatherIcon = $("<h2>").addClass(faIcon);
         var card = $("<div>").addClass("card");
             //card.attr("id", "resultCard");
         var temp = $("<h4>").addClass("card-text").text("Temp: " + data.main.temp + "F");
@@ -34,7 +38,7 @@ function searchWeather(searchValue){
             cardBody.attr("id", "resultCardBody");
 
         //append current stats to card
-        cardBody.append(title, temp, wind, humidity);
+        cardBody.append(title, weatherIcon, temp, wind, humidity);
         card.append(cardBody);
         $("#today").append(card);
 
@@ -50,7 +54,7 @@ function saveCity(city){
 
     //store city as the last one searched
     localStorage.setItem("savedCity", city);
-    
+
     //Only append cities to the history once
     if(cityList.indexOf(city) === -1 ){
         var cityName = $("<h4>").addClass("card-title").text(city);
