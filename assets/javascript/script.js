@@ -22,15 +22,16 @@ function searchWeather(searchValue){
 
         //store city data in history
         saveCity(searchValue);
-
-        //<i class="fas fa-cloud"></i>
-        var faIcon = "fas fa-cloud"
+        console.log(data);
 
         //creating a card to display the weather data
         var title = $("<h3>").addClass("card-title").text(data.name);
-        var weatherIcon = $("<h2>").addClass(faIcon);
+
+        //get weather icon url 
+        var weatherIconURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+        var weatherIcon = $("<img>").attr("src", weatherIconURL);
+        
         var card = $("<div>").addClass("card");
-            //card.attr("id", "resultCard");
         var temp = $("<h4>").addClass("card-text").text("Temp: " + data.main.temp + "F");
         var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + "MPH");
         var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
@@ -93,9 +94,10 @@ function getForecast(city){
             var forecastDay = data.list[i].dt_txt;
             forecastDay = forecastDay.split(' ')[0]; 
             var title = $("<h3>").addClass("card-title").text(forecastDay);
-
+            //get the weather icon url
             var weatherIconURL = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
             var showIcon = $("<img>").attr("src", weatherIconURL);
+
             var temp = $("<h4>").addClass("card-text").text("Temp: " + data.list[i].main.temp + "F");
             var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity);
             var column = $("<div>").addClass("col-md-5ths");
