@@ -19,12 +19,16 @@ function searchWeather(searchValue){
     }).then(function(data){
         //make sure there are no previous results
         $("#today").empty();
+        console.log(data)
 
         //store city data in history
         saveCity(searchValue);
         
+        //var weatherIcon = $("<i class='fas fa-cloud'></i>")
+        
         //creating a card to display the weather data
-        var title = $("<h3>").addClass("card-title").text(data.name);
+        var title = $("<h3>").addClass("card-title").text(data.name + " ");
+            //title.innerHTML(weatherIcon);
         var card = $("<div>").addClass("card");
             //card.attr("id", "resultCard");
         var temp = $("<h4>").addClass("card-text").text("Temp: " + data.main.temp + "F");
