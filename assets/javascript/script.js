@@ -139,7 +139,11 @@ function getUVIndex(lat, lon){
 //set inital variables and retrive saved data from local storage
 function init (){
     var savedCity = localStorage.getItem("savedCity")
-    searchWeather(savedCity);
+
+    //Only run by default if there is a saved city
+    if(savedCity != null){
+        searchWeather(savedCity);
+    } 
 }
 
 //always load stored data
