@@ -1,6 +1,5 @@
 $(document).ready(function(){
     //variables
-    var APIKey = configVariables.apiKey;
     var cityList = [];
 
     //function grabs the user input value
@@ -13,7 +12,7 @@ $(document).ready(function(){
 function searchWeather(searchValue){
     $.ajax({
         type:"GET",
-        url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&appid=" + APIKey + "&units=imperial",
+        url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&appid=533de5737eeb350921f5a880f037bbf8&units=imperial",
         dataType: "json"
         
     }).then(function(data){
@@ -84,7 +83,7 @@ function saveCity(city){
 function getForecast(city){
     $.ajax({
         type:"GET",
-        url: "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=imperial",
+        url: "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=533de5737eeb350921f5a880f037bbf8&units=imperial",
         dataType: "json"
         
     }).then(function(data){
@@ -121,7 +120,7 @@ function getForecast(city){
 function getUVIndex(lat, lon){
     $.ajax({
         type:"GET",
-        url: "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey,
+        url: "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=533de5737eeb350921f5a880f037bbf8",
     }).then(function(data){
         var uvIndex = $("<p>").addClass("card-text").text("UV Index: " + data.value);
         if(data.value < 3){
