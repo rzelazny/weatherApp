@@ -12,7 +12,7 @@ $(document).ready(function(){
 function searchWeather(searchValue){
     $.ajax({
         type:"GET",
-        url: "http://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&appid=533de5737eeb350921f5a880f037bbf8&units=imperial",
+        url: "https://api.openweathermap.org/data/2.5/weather?q=" + searchValue + "&appid=533de5737eeb350921f5a880f037bbf8&units=imperial",
         dataType: "json"
         
     }).then(function(data){
@@ -35,7 +35,7 @@ function searchWeather(searchValue){
         var cityName = $("<h3>").addClass("card-title").text(data.name);
 
         //get weather icon url 
-        var weatherIconURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+        var weatherIconURL = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
         var weatherIcon = $("<img>").attr("src", weatherIconURL);
             weatherIcon.addClass("weather-icon");
 
@@ -83,7 +83,7 @@ function saveCity(city){
 function getForecast(city){
     $.ajax({
         type:"GET",
-        url: "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=533de5737eeb350921f5a880f037bbf8&units=imperial",
+        url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=533de5737eeb350921f5a880f037bbf8&units=imperial",
         dataType: "json"
         
     }).then(function(data){
@@ -97,7 +97,7 @@ function getForecast(city){
             forecastDay = forecastDay.split(' ')[0]; 
             var title = $("<h3>").addClass("card-title").text(forecastDay);
             //get the weather icon url
-            var weatherIconURL = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
+            var weatherIconURL = "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
             var showIcon = $("<img>").attr("src", weatherIconURL);
             showIcon.addClass("forecast-icon");
 
@@ -120,7 +120,7 @@ function getForecast(city){
 function getUVIndex(lat, lon){
     $.ajax({
         type:"GET",
-        url: "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=533de5737eeb350921f5a880f037bbf8",
+        url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=533de5737eeb350921f5a880f037bbf8",
     }).then(function(data){
         var uvIndex = $("<p>").addClass("card-text").text("UV Index: " + data.value);
         if(data.value < 3){
